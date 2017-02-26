@@ -3,12 +3,14 @@ __author__ = 'Ahmet Erkan ÇELİK'
 from datetime import datetime
 import math
 primeCache = {}
-def isPrime(x):
+
+
+def is_prime(x):
     if x in  primeCache.keys():
         return primeCache[x]
     if x < 2 : return False
     max = math.floor(math.sqrt(x))+1
-    for n in range(2,max):
+    for n in range(2, max):
         if x % n == 0:
             primeCache[x] = False
             return False
@@ -17,26 +19,36 @@ def isPrime(x):
         return True
 
 
+def is_trunc_prime(n, v):
+    if n < 10:
+        return is_prime(n)
+    if is_prime(n):
+        if v == "left":
+           n = int(str(n)[1:])
+        else:
+           n = int(str(n)[:-1])
+        return is_trunc_prime(n, v)
+    return False
+
+
+def is_both_trunc_prime(n):
+    return is_trunc_prime(n, "left") and is_trunc_prime(n, "right")
+
 startTime = datetime.now()
 
-primeDigits = [2, 3, 5, 7]
-primeIndex = 0
-truncPrimeCache = []
+truncPrimeNumber = 0
+truncPrimes = []
 sum =0
-while primeIndex<11:
-    for d in primeDigits:
-        p = d
-        tp = p
-        while isPrime(tp):
-            for o in range(1, 9):
-                if tp > 10 and truncPrimeCache.index(tp) == -1:
-                    p = tp
-                    truncPrimeCache.append(tp)
-                    primeIndex += 1
-                    sum += p
-                tp = int(str(o)+ str(p))
+number = 11
+while truncPrimeNumber < 11:
+    if is_both_trunc_prime(number):
+        sum += number
+        truncPrimeNumber += 1
+        truncPrimes.append(number)
+    number += 1
 
 print(sum)
+print(truncPrimes)
 print(datetime.now()-startTime)
 
 
