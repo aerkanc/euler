@@ -38,6 +38,7 @@ for p in range(3,limit):
                     max_p = p
                     max_s = sol[p]
 
+# sonuç: 
 print("Result is: ", max_p, max_s)
 print(datetime.now()-startTime)
 
