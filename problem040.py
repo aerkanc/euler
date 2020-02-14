@@ -16,8 +16,18 @@ startTime = datetime.now()
 #
 # d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
 
-result = ""
-print("Result is: ", result)
+result = 1
+d = 0
+i = 0
+irr_number_frac = ""
+while d <= 1000000:
+    i += 1
+    irr_number_frac += str(i)
+    d = len(irr_number_frac)
+
+for r in range(0,6):
+    result *= int(irr_number_frac[10 ** r - 1])
+print(result)
 print(datetime.now()-startTime)
 
 
