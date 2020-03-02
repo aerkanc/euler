@@ -14,6 +14,8 @@ startTime = datetime.now()
 #
 # Using words.txt (right click and 'Save Link/Target As...'), a 16K text file containing nearly two-thousand common English words, how many are triangle words?
 
+def is_triangle_number(n):
+    pass
 
 print("Result is: ")
 print(datetime.now() - startTime)
