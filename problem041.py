@@ -56,3 +56,5 @@ def get_prime_pandigital_number():
 
 print("Result is: ", get_prime_pandigital_number())
 print(datetime.now() - startTime)
+# Result is:  7652413
+# 0:00:01.572953
