@@ -42,19 +42,23 @@ def get_number(number_pool):
                 if start_index >= len(new_number_pool):
                     start_index = 0
 
-
+tried = 0
 def get_prime_pandigital_number():
     digits = ["9", "8", "7", "6", "5", "4", "3", "2", "1"]
     digit_num = len(digits)
     for dn in range(digit_num, 1, -1):
         pool = digits[digit_num-dn:]
         for number in get_number(pool):
-            print("Generated Number: %s" % (number))
+            global tried
+            tried += 1
+            # print("Generated Number: %s" % (number))
             if is_prime(int(number)):
                 return number
 
 
 print("Result is: ", get_prime_pandigital_number())
-print(datetime.now() - startTime)
+print("completed at: %s " % str(datetime.now() - startTime))
+print("tried: " + str(tried))
 # Result is:  7652413
-# 0:00:01.572953
+# completed at: 0:00:00.915280
+# tried: 403214
