@@ -14,8 +14,31 @@ startTime = datetime.now()
 #
 # Using words.txt (right click and 'Save Link/Target As...'), a 16K text file containing nearly two-thousand common English words, how many are triangle words?
 
-def is_triangle_number(n):
-    pass
 
-print("Result is: ")
+def is_triangle_number(n):
+    y = n * 2
+    s = int(math.sqrt(y))
+    d = y / s
+    if math.fabs(d-s) == 1:
+        # print("%s * %s / 2 = %s" % (s, d, n))
+        return True
+    return False
+
+words = open("./data/42/p042_words.txt").read().replace("\"","").split(",")
+letters = {}
+
+for li in range(0, ord('Z')-ord('A') + 1):
+    letters[chr(ord('A')+li)] = li+1
+tw_count = 0
+for w in words:
+    wp = 0
+    for l in w:
+        wp += letters[l]
+    # print('%s = %s' % (w, wp))
+    if is_triangle_number(wp):
+        tw_count+=1
+
+print("Result is: %s" % (tw_count))
 print(datetime.now() - startTime)
+# Result is: 162
+# 0:00:00.001681
