@@ -14,7 +14,28 @@ import math
 startTime = datetime.now()
 result = 0
 
+pentagonal_numbers = []
 
-print("Result is: %s" % (result))
-print(datetime.now() - startTime)
 
+def generate_pentagonal_numbers():
+    i = 1
+    while True:
+        yield (i * (3 * i - 1)) / 2
+        i += 1
+
+
+for pn in generate_pentagonal_numbers():
+    pentagonal_numbers.append(pn)
+    if len(pentagonal_numbers) > 1:
+        for i in range(0, len(pentagonal_numbers)):
+            for j in range(i+1,len(pentagonal_numbers)-1):
+                sum = pentagonal_numbers[i] + pentagonal_numbers[j]
+                if sum == pn:
+                    diff = abs(pentagonal_numbers[i] - pentagonal_numbers[j])
+                    if diff in pentagonal_numbers:
+                        result = diff
+                        print("Result is: %s" % (result))
+                        print(datetime.now() - startTime)
+                        exit()
+# Result is: 5482660.0
+# 0:04:55.383557
