@@ -18,13 +18,47 @@ result = 0
 pentagonal_numbers = []
 
 
-def generate_pentagonal_numbers():
-    i = 1
-    while True:
-        yield (i * (3 * i - 1)) / 2
-        i += 1
+def is_triangle_number(number):
+    nn1 = number * 2  # n(n+1) elde etmek için
+    n = int(math.sqrt(nn1))
+    if nn1 == n * (n+1):
+        return True
+    else:
+        return False
 
 
+def is_pentagonal_number(number):
+    n3n1 = number * 2  # n(3n−1) = 3n^2 - n  elde etmek için
+    # 3n^2 - n - x = 0
+    delta = 1 + (12 * n3n1)
+    n = (1 + math.sqrt(delta)) / 6
+    if n == int(n):
+        return True
+    else:
+        return False
+
+
+def is_hexagonal_number(number):
+    #2n^2 -n - number = 0
+    delta = 1 + 8 * number
+    n = (1 + math.sqrt(delta)) / 4
+
+    if n == int(n):
+        return True
+    else:
+        return False
+
+def generate_hexagonal_number(n):
+    return n * (2 * n - 1)
+
+
+n = 286
+hn = generate_hexagonal_number(n)
+while not is_triangle_number(hn) or not is_pentagonal_number(hn):
+    n += 1
+    hn = generate_hexagonal_number(n)
+
+result = hn
 print("Result is: %s" % (result))
 print(datetime.now() - startTime)
 exit()
