@@ -13,6 +13,6 @@ import math
 startTime = datetime.now()
 result = 0
 
-print("Result is: %s" % result))
+print("Result is: %s" % result)
 print(datetime.now() - startTime)
 exit()
