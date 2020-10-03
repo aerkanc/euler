@@ -10,8 +10,9 @@ import math
 
 startTime = datetime.now()
 result = 0
+for n in range(1, 1001):
+    result += n ** n
 
-
-print("Result is: %s" % (result))
+print("Result is: %s" % (str(result)[-10:]))
 print(datetime.now() - startTime)
 exit()
